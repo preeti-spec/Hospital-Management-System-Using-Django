@@ -1,0 +1,58 @@
+{% extends 'navigationbar.html' %}
+{% block body %}
+{% load static %}
+{% ifequal error "yes"%}
+<script>
+	alert('Logged In Successfully')
+	window.location=({%url 'home'%})
+	
+</script>
+{% endifequal %}
+
+
+{% ifequal error "no"%}
+<script>
+	alert('Invalid Credentialds,Try Again');
+
+	
+</script>
+{% endifequal %}
+<br>
+<br>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-sm-6">
+		<h2 class="text-center">NEW USER</h2>
+		<HR>
+		<p>Create an account</p>
+	<center><a href="{% url 'signup'%}" class="btn btn-danger text-white mt-5">CREATE AN ACCOUNT</a></center>
+	</div>
+		<div class="col-sm-6">
+			<h2 class="text-center">USER LOGIN</h2>
+		<HR>
+		<form method="POST">
+	    {% csrf_token %} 
+		<label><b>Username</b></label>
+		<input type = text placeholder="Enter Username" name="uname" class="form-control">
+		<label><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" name="pwd" class="form-control">
+		<br>
+		<input type= submit value="Login" class="form-control btn btn-success">
+	   </form>
+		</div>
+
+</div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
